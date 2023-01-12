@@ -13,6 +13,13 @@ router
     jobsController.saveAJob
   );
 
-router.route("/:id").get(jobsController.getSpecificJob);
+router
+  .route("/:id")
+  .get(jobsController.getSpecificJob)
+  .patch(
+    verifyToken,
+    authorization("hiring-manager", "admin"),
+    jobsController.updateJob
+  );
 
 module.exports = router;
