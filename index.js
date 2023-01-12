@@ -26,9 +26,9 @@ const jobsRoute = require('./routes/jobs.routes');
 const managerRoute = require('./routes/manager.route');
 const authRoute = require('./routes/auth.route');
 
-app.use('/api/v1/jobs', jobsRoute);
-app.use('/api/v1/jobs', managerRoute);
-app.use('/api/v1', authRoute);
+app.use('/jobs', jobsRoute);
+app.use('/manager', managerRoute);
+app.use('/user', authRoute);
 
 app.listen(PORT, () => {
     console.log('Server listening on port'.yellow.bold, PORT);

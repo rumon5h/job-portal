@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require("validator");
 const bcrypt = require('bcrypt');
 
+
 const userSchema = mongoose.Schema({
     name: {
         type: String,
@@ -70,6 +71,6 @@ userSchema.methods.comparePassword = function (userPassword, hash) {
     return isPasswordValid;
 };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Users", userSchema);
 
 module.exports = User;

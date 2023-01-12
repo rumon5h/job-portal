@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const {ObjectId} = mongoose.Schema.Types;
 
+
 const jobSchema = mongoose.Schema({
     name: {
         type: String,
