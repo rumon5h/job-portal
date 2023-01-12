@@ -23,10 +23,10 @@ app.get('/', (req, res) => {
 
 
 const jobsRoute = require('./routes/jobs.routes');
+const managerRoute = require('./routes/manager.route');
 
-
-app.use('/api/v1/jobs', jobsRoute)
-
+app.use('/api/v1/jobs', jobsRoute);
+app.use('/api/v1/jobs', managerRoute);
 
 app.listen(PORT, () => {
     console.log('Server listening on port'.yellow.bold, PORT);
