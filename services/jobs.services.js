@@ -7,4 +7,4 @@ exports.getJobsServices = async (filter, queries) => {
         .sort(queries.sortBy)
         .select(queries.fields)
     return result;
-}
+};
