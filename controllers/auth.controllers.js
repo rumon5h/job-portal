@@ -1,4 +1,4 @@
-const { signupService } = require("../services/auth.service");
+const { signupService, findUserByEmailService } = require("../services/auth.service");
 
 exports.signup = async (req, res) => {
     try {
@@ -6,13 +6,31 @@ exports.signup = async (req, res) => {
 
         res.status(200).json({
             status: "Success",
-            message: "Successfully created account",
+            message: "Successfully created your account",
             data: user
         })
     } catch (error) {
         res.status(400).json({
-            status: "Fail",
-            message: "Couldn't create account",
+            status: "Failed",
+            message: "Failed to create the account",
+            error: error.message
+        })
+    }
+}
+
+exports.getMe = async (req, res) => {
+    try {
+        const user = await findUserByEmailService(req.user?.email);
+
+        res.status(200).json({
+            status: "Success",
+            message: 'Successfully retrieved the account',
+            data: user
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: "failed",
+            message: "Failed to Login",
             error: error.message
         })
     }

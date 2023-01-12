@@ -5,3 +5,9 @@ exports.signupService = async (userInfo) => {
 
     return result;
 }
+
+exports.findUserByEmailService = async (email) => {
+    const result = await User.findOne({ email });
+
+    return result;
+}
