@@ -8,3 +8,8 @@ exports.getJobsServices = async (filter, queries) => {
         .select(queries.fields)
     return result;
 };
+
+exports.getSpecificJobService = async (id) => {
+    const result = await Jobs.findOne({ _id: id });
+    return result;
+}

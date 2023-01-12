@@ -1,4 +1,4 @@
-const { getJobsServices } = require("../services/jobs.services");
+const { getJobsServices, getSpecificJobService } = require("../services/jobs.services");
 
 exports.getAllJob = async (req, res) => {
     try {
@@ -40,6 +40,33 @@ exports.getAllJob = async (req, res) => {
         res.status(200).json({
             status: "failed",
             message: "failed to get all jobs",
+            error: error.message
+        })
+    }
+}
+
+exports.getSpecificJob = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const job = await getSpecificJobService(id)
+
+        if (!job) {
+            res.status(400).json({
+                status: "failed",
+                message: "Couldn't get job with this id",
+                error: "Job not found with this id"
+            })
+        }
+
+        res.status(200).json({
+            status: "Success",
+            message: "Successfully got the job",
+            data: job
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: "Failed to get job",
             error: error.message
         })
     }
