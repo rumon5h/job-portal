@@ -1,4 +1,5 @@
 const Jobs = require('../models/Job');
+const User = require('../models/User');
 
 exports.getJobsServices = async (filter, queries) => {
     const result = await Jobs.find(filter)
@@ -23,5 +24,17 @@ exports.updateJobService = async (id, data) => {
     const result = await Jobs.updateOne({ _id: id }, data, {
         runValidators: true
     });
+    return result;
+}
+
+exports.getAppliedJob = async (data) => {
+    const user = await User.findOne({ email: data.user.email });
+    const { jobId } = data;
+
+    const result = await Jobs.updateOne(
+        { _id: jobId },
+        { $push: { candidates_applied: { id: user._id, name: user.name, email: user.email } } }
+    )
+
     return result;
 }
