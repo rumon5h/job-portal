@@ -18,3 +18,10 @@ exports.saveAJobService = async (data) => {
     const result = await Jobs.create(data);
     return result;
 }
+
+exports.updateJobService = async (id, data) => {
+    const result = await Jobs.updateOne({ _id: id }, data, {
+        runValidators: true
+    });
+    return result;
+}
