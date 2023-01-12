@@ -5,6 +5,7 @@ const { generateToken } = require("../utils/token");
 exports.signup = async (req, res) => {
     try {
         const user = await signupService(req.body);
+        console.log(user);
 
         res.status(200).json({
             status: "Success",
