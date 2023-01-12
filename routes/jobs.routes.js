@@ -4,6 +4,9 @@ const jobsController = require("../controllers/jobs.controllers");
 const authorization = require("../middlewares/authorization");
 const { verifyToken } = require("../middlewares/verifyToken");
 
+
+router.route("/:id/apply").post( verifyToken, jobsController.applyToTheJob)
+
 router
   .route("/")
   .get(jobsController.getAllJob)
