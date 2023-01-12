@@ -13,3 +13,8 @@ exports.getSpecificJobService = async (id) => {
     const result = await Jobs.findOne({ _id: id });
     return result;
 }
+
+exports.saveAJobService = async (data) => {
+    const result = await Jobs.create(data);
+    return result;
+}
