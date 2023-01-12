@@ -21,6 +21,13 @@ app.get('/', (req, res) => {
     res.end();
 });
 
+
+const jobsRoute = require('./routes/jobs.routes');
+
+
+app.use('/api/v1/jobs', jobsRoute)
+
+
 app.listen(PORT, () => {
     console.log('Server listening on port'.yellow.bold, PORT);
 });
